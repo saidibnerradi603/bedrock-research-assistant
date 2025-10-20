@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 function CitationCard({ source, index }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -102,7 +104,7 @@ export default function ChatPanel({ paperId }) {
     abortControllerRef.current = new AbortController()
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat/query', {
+      const response = await fetch(`${apiUrl}/api/chat/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

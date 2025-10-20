@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 const sections = [
   { key: 'summary', label: 'Executive Summary', icon: FileText, color: 'bg-brand-rand-500 to-brand-600', bg: 'from-brand-50 to-brand-100', border: 'border-brand-200' },
   { key: 'background', label: 'Background', icon: BookOpen, gradient: 'from-primary-500 to-primary-600', bg: 'from-primary-50 to-primary-100', border: 'border-primary-200' },
@@ -89,7 +91,7 @@ export default function SummaryPanel({ paperId }) {
     setError(null)
     
     try {
-      const response = await axios.get(`/api/papers/${paperId}/summary`)
+      const response = await axios.get(`${apiUrl}/api/papers/${paperId}/summary`)
       setSummary(response.data.summary)
       setExpandedSections(new Set(['summary']))
     } catch (err) {

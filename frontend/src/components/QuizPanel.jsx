@@ -3,6 +3,8 @@ import { Loader2, CheckCircle, XCircle, HelpCircle, RotateCcw } from 'lucide-rea
 import { motion } from 'framer-motion'
 import axios from 'axios'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 function QuizQuestion({ question, index, onAnswer, userAnswer, showResult }) {
   const optionLetters = ['A', 'B', 'C', 'D']
   
@@ -106,8 +108,8 @@ export default function QuizPanel({ paperId }) {
     setShowResults(false)
     
     try {
-      const response = await axios.get(`/api/papers/${paperId}/quiz?num_questions=10`)
-      
+      const response = await axios.get(`${apiUrl}/api/papers/${paperId}/quiz?num_questions=10`)
+
       console.log("Quiz response:", response.data);
       
       // The backend returns: { paper_id, questions: [...], processing_time_seconds, message }

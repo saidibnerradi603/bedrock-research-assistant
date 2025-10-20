@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Loader2, Brain, ExternalLink } from 'lucide-react'
 import axios from 'axios'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 export default function MindmapPanel({ paperId }) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -25,7 +27,7 @@ export default function MindmapPanel({ paperId }) {
     setError(null)
     
     try {
-      const response = await axios.get(`/api/papers/${paperId}/mindmap`, {
+     const response = await axios.get(`${apiUrl}/api/papers/${paperId}/mindmap`, {
         responseType: 'text'
       })
       

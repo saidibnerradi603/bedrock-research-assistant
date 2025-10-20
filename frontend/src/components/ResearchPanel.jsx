@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 export default function ResearchPanel() {
   const [query, setQuery] = useState('')
   const [isResearching, setIsResearching] = useState(false)
@@ -20,10 +22,10 @@ export default function ResearchPanel() {
     setReport(null)
 
     try {
-      const response = await fetch('http://localhost:8000/api/research/query', {
+      const response = await fetch(`${apiUrl}/api/research/query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           query: query.trim(),
           max_iterations: 15,
           min_search_results: 8
@@ -36,7 +38,7 @@ export default function ResearchPanel() {
 
       const data = await response.json()
       setReport(data.document_content)
-      
+
     } catch (err) {
       setError(err.message || 'Research failed')
     } finally {
@@ -83,7 +85,7 @@ export default function ResearchPanel() {
               What would you like to research?
             </h3>
           </div>
-          
+
           <div className="flex gap-3">
             <input
               type="text"
@@ -144,15 +146,15 @@ export default function ResearchPanel() {
                   <Loader2 className="w-6 h-6 text-accent-600 dark:text-accent-400 animate-spin" strokeWidth={2.5} />
                 </div>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
                 Conducting Deep Research
               </h3>
-              
+
               <p className="text-neutral-600 dark:text-neutral-400 mb-6 text-center max-w-md">
                 Our AI agent is analyzing multiple sources and generating a comprehensive report
               </p>
-              
+
               <div className="flex items-center gap-2 mt-4">
                 <div className="w-2 h-2 bg-accent-500 rounded-full animate-bounce" />
                 <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />

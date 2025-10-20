@@ -3,6 +3,8 @@ import { Upload, FileText, Loader2, CheckCircle, AlertCircle, Sparkles } from 'l
 import { motion } from 'framer-motion'
 import axios from 'axios'
 
+const apiUrl = import.meta.env.VITE_API_URL || ''
+
 export default function UploadArea({ onUploadSuccess }) {
   const [isDragging, setIsDragging] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
@@ -54,7 +56,7 @@ export default function UploadArea({ onUploadSuccess }) {
       const formData = new FormData()
       formData.append('file', file)
 
-      const uploadResponse = await axios.post('/api/papers/upload-and-process', formData, {
+      const uploadResponse = await axios.post(`${apiUrl}/api/papers/upload-and-process`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
@@ -100,7 +102,7 @@ export default function UploadArea({ onUploadSuccess }) {
       setIsProcessing(true)
 
       // Step 2: Embed and store (synchronous operation)
-      const embedResponse = await axios.post('/api/papers/embed-store', {
+      const embedResponse = await axios.post(`${apiUrl}/api/papers/embed-store`, {
         paper_id
       })
 
