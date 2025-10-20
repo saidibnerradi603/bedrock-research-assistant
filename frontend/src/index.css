@@ -1,0 +1,211 @@
+@import 'katex/dist/katex.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-50 dark:bg-neutral-900 min-h-screen transition-colors duration-300;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    @apply border-neutral-200 dark:border-neutral-700 transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Card Styles */
+  .glass-card {
+    @apply bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-soft hover:shadow-medium transition-all duration-300 rounded-2xl;
+  }
+  
+  .card-elevated {
+    @apply bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-large hover:shadow-xl transition-all duration-300 rounded-2xl;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-medium hover:shadow-large hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-white dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-6 py-3 rounded-xl font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-600 transition-all duration-200 border border-neutral-300 dark:border-neutral-600 shadow-soft hover:shadow-medium hover:scale-[1.02] flex items-center justify-center gap-2;
+  }
+  
+  .btn-ghost {
+    @apply text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold;
+  }
+  
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700 border border-primary-200;
+  }
+  
+  .badge-success {
+    @apply bg-success-100 text-success-700 border border-success-200;
+  }
+  
+  .badge-brand {
+    @apply bg-brand-100 text-brand-700 border border-brand-200;
+  }
+  
+  .badge-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-brand-500 text-white border-0;
+  }
+  
+  /* Input Styles */
+  .input-field {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white placeholder:text-neutral-400;
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #262626;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #0ea5e9);
+  border-radius: 10px;
+  border: 2px solid #fafafa;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #0ea5e9);
+  border-radius: 10px;
+  border: 2px solid #262626;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9333ea, #0284c7);
+}
+
+/* Markdown styles */
+.markdown-content {
+  @apply prose prose-neutral max-w-none;
+}
+
+.markdown-content h1 {
+  @apply text-3xl font-bold mt-6 mb-4 text-neutral-900 dark:text-neutral-100;
+}
+
+.markdown-content h2 {
+  @apply text-2xl font-bold mt-5 mb-3 text-neutral-800 dark:text-neutral-200;
+}
+
+.markdown-content h3 {
+  @apply text-xl font-semibold mt-4 mb-2 text-neutral-700 dark:text-neutral-300;
+}
+
+.markdown-content p {
+  @apply mb-4 text-neutral-700 dark:text-neutral-300 leading-relaxed;
+}
+
+.markdown-content ul, .markdown-content ol {
+  @apply mb-4 ml-6;
+}
+
+.markdown-content li {
+  @apply mb-2 text-neutral-700 dark:text-neutral-300;
+}
+
+.markdown-content code {
+  @apply bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-md text-sm font-mono text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700;
+}
+
+.markdown-content pre {
+  @apply bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-4 rounded-xl overflow-x-auto mb-4 shadow-medium;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent border-0 text-neutral-100 dark:text-neutral-200 p-0;
+}
+
+.markdown-content table {
+  @apply w-full border-collapse mb-4 rounded-lg overflow-hidden;
+}
+
+.markdown-content th {
+  @apply bg-primary-50 dark:bg-primary-900/30 border border-neutral-200 dark:border-neutral-700 px-4 py-3 text-left font-semibold text-neutral-900 dark:text-neutral-100;
+}
+
+.markdown-content td {
+  @apply border border-neutral-200 dark:border-neutral-700 px-4 py-3 text-neutral-700 dark:text-neutral-300;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-primary-500 dark:border-primary-400 pl-4 italic text-neutral-600 dark:text-neutral-400 my-4 bg-primary-50/50 dark:bg-primary-900/20 py-2 rounded-r-lg;
+}
+
+.markdown-content strong {
+  @apply text-neutral-900 dark:text-neutral-100 font-semibold;
+}
+
+.markdown-content a {
+  @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline decoration-primary-300 dark:decoration-primary-600 hover:decoration-primary-500 dark:hover:decoration-primary-400 transition-colors;
+}
+
+/* Smooth scroll behavior */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states for dark mode */
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  @apply ring-primary-400 border-primary-400;
+}
+
+/* Improved button states for dark mode */
+.dark .btn-primary:hover {
+  @apply shadow-xl;
+}
+
+.dark .btn-secondary:hover {
+  @apply shadow-large;
+}
+
+/* Better card hover effects in dark mode */
+.dark .glass-card:hover {
+  @apply shadow-xl border-neutral-600;
+}
+
+/* Improved gradient text for dark mode */
+.dark .bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}

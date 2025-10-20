@@ -1,0 +1,19 @@
+from langchain_aws import BedrockEmbeddings
+from config import get_settings
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class EmbeddingService:
+    
+    def __init__(self):
+        settings = get_settings()
+        
+        self.embeddings = BedrockEmbeddings(
+            model_id=settings.bedrock_embedding_model,
+            region_name=settings.aws_default_region
+        )
+    
+    def get_embeddings(self):
+        return self.embeddings
