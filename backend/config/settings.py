@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     
     # Bedrock Configuration
     bedrock_embedding_model: str = "amazon.titan-embed-text-v2:0"
-    bedrock_chat_model: str = "us.amazon.nova-pro-v1:0"
+    bedrock_chat_model: str 
     embedding_dimension: int = 1024
     
     # Pinecone Configuration

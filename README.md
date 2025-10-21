@@ -8,7 +8,7 @@ A comprehensive full-stack application that leverages AWS Bedrock's advanced AI 
 
 ## Overview
 
-The Research Paper Analysis System is an enterprise-grade platform designed to transform how researchers interact with academic papers. By combining AWS Bedrock's powerful AI models (Amazon Nova Premier and Titan Embeddings) with modern web technologies, the system provides an intuitive interface for uploading PDFs, extracting insights, generating summaries, creating quizzes, visualizing concepts, and conducting autonomous research.
+The Research Paper Analysis System is an enterprise-grade platform designed to transform how researchers interact with academic papers. By combining AWS Bedrock's powerful AI models (Amazon Nova Pro and Titan Embeddings) with modern web technologies, the system provides an intuitive interface for uploading PDFs, extracting insights, generating summaries, creating quizzes, visualizing concepts, and conducting autonomous research.
 
 ### Key Capabilities
 
@@ -25,11 +25,11 @@ The Research Paper Analysis System is an enterprise-grade platform designed to t
 
 The system is built on AWS Bedrock, Amazon's fully managed service for foundation models, providing enterprise-grade AI capabilities with security and scalability.
 
-### Amazon Nova Premier v1
+### Amazon Nova Pro v1
 
-**Model ID**: `us.amazon.nova-premier-v1:0`
+**Model ID**: `us.amazon.nova-pro-v1:0`
 
-Amazon Nova Premier serves as the primary language model for all text generation and analysis tasks:
+Amazon Nova Pro serves as the primary language model for all text generation and analysis tasks:
 
 - **Conversational AI**: Powers the RAG-based chat interface for natural Q&A with research papers
 - **Document Analysis**: Generates comprehensive 9-section summaries covering methodology, results, and implications
@@ -145,7 +145,7 @@ Pinecone Vector Storage
 **RAG Query Pipeline**:
 ```
 User Question → Bedrock Embeddings → Pinecone Similarity Search → 
-Context Retrieval → Bedrock Nova Premier → Answer Generation → 
+Context Retrieval → Bedrock Nova Pro → Answer Generation → 
 Source Citations
 ```
 
@@ -402,7 +402,7 @@ The backend provides comprehensive REST API documentation:
 Models are configured in `backend/config/settings.py`:
 
 ```python
-bedrock_chat_model = "us.amazon.nova-premier-v1:0"
+bedrock_chat_model = "us.amazon.nova-pro-v1:0"
 bedrock_embedding_model = "amazon.titan-embed-text-v2:0"
 embedding_dimension = 1024
 ```

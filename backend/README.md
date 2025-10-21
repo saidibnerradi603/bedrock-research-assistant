@@ -16,7 +16,7 @@ The system leverages AWS Bedrock for all AI-powered operations:
 
 #### Models Used:
 
-**Amazon Nova Premier v1** (`us.amazon.nova-premier-v1:0`)
+**Amazon Nova Premier v1** (`us.amazon.nova-pro-v1:0`)
 - Purpose: Primary LLM for chat, analysis, and document generation
 - Use Cases:
   - Research paper summarization

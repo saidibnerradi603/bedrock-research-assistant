@@ -525,7 +525,22 @@ Deploy `dist/` folder to:
 - Any static hosting service
 
 ### Environment Configuration
-Update `vite.config.js` proxy target for production backend URL.
+
+
+Create Environment Files in the Frontend Directory
+
+For Local Development (`.env.local` or `.env.development`)
+
+```env
+VITE_API_URL=http://localhost:8000
+````
+
+For Production (`.env.production`)
+
+```env
+VITE_API_URL=https://your-backend-api-url.com
+````
+
 
 ## Future Enhancements
 
