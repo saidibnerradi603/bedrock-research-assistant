@@ -17,13 +17,13 @@ app = FastAPI(
     title="Research Paper Analysis System",
     description="AI-powered system for analyzing research papers using RAG (Retrieval-Augmented Generation)",
     version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc"
+    docs_url=None,  
+    redoc_url=None
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["https://bedrock-research-assistant.netlify.app"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,8 +42,6 @@ async def root():
     return {
         "message": "Research Paper Analysis System API",
         "status": "running",
-        "docs": "/docs",
-        "redoc": "/redoc"
     }
 
 
