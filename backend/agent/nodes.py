@@ -7,13 +7,18 @@ from utils.system_prompt import (
     REACT_SYSTEM_PROMPT, PLANNING_PROMPT, SEARCH_ANALYSIS_PROMPT, 
     DOCUMENT_GENERATION_PROMPT, ERROR_RECOVERY_PROMPT, COMPLETION_VALIDATION_PROMPT
 )
-from services.llm_service import LLMService
 from tools.search import tavily_search, perplexity_search
 import re
+from langchain_aws import ChatBedrockConverse
+from config import get_settings
+
+settings = get_settings()
+llm = ChatBedrockConverse(
+    model="us.anthropic.claude-3-7-sonnet-20250219-v1:0",  
+    region_name=settings.aws_default_region
+)
 
 
-llm_service = LLMService() 
-llm = llm_service.get_llm()
 
 
 def planning_node(state: AgentState) -> AgentState:
