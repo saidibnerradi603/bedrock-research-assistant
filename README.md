@@ -315,9 +315,9 @@ The frontend will be available at `http://localhost:3000`
 Create a `.env` file in the `backend` directory with the following variables:
 
 ```env
-# AWS Credentials
-AWS_ACCESS_KEY_ID=your-aws-access-key
-AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+# AWS Credentials 
+ACCESS_KEY_ID=your-aws-access-key
+SECRET_ACCESS_KEY=your-aws-secret-key
 AWS_DEFAULT_REGION=us-east-1
 
 # API Keys

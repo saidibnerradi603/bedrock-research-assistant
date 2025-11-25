@@ -7,8 +7,8 @@ class Settings(BaseSettings):
     
     # API Keys
     mistral_api_key: str
-    aws_access_key_id: str
-    aws_secret_access_key: str
+    access_key_id: str
+    secret_access_key: str
     aws_default_region: str = "us-east-1"
     pinecone_api_key: str
     tavily_api_key: str 

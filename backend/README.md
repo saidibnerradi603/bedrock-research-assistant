@@ -86,8 +86,8 @@ Boto3-based client with automatic bucket creation and comprehensive file operati
 
 #### Environment Variables (.env):
 ```bash
-AWS_ACCESS_KEY_ID="your-aws-access-key-id"
-AWS_SECRET_ACCESS_KEY="your-aws-secret-access-key"
+ACCESS_KEY_ID="your-aws-access-key-id"
+SECRET_ACCESS_KEY="your-aws-secret-access-key"
 AWS_DEFAULT_REGION="us-east-1"
 ```
 
@@ -243,8 +243,8 @@ Document Generation (Bedrock) → Markdown Report
 ### Settings (`backend/config/settings.py`)
 
 **AWS Configuration**:
-- `aws_access_key_id`: AWS access key
-- `aws_secret_access_key`: AWS secret key
+- `access_key_id`: AWS access key 
+- `secret_access_key`: AWS secret key 
 - `aws_default_region`: AWS region (default: us-east-1)
 - `bedrock_chat_model`: Nova Premier model ID
 - `bedrock_embedding_model`: Titan Embeddings model ID
