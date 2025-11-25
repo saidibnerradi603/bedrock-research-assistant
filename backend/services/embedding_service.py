@@ -12,7 +12,10 @@ class EmbeddingService:
         
         self.embeddings = BedrockEmbeddings(
             model_id=settings.bedrock_embedding_model,
-            region_name=settings.aws_default_region
+            region_name=settings.aws_default_region,
+            credentials_profile_name=None,
+            aws_access_key_id=settings.access_key_id,
+            aws_secret_access_key=settings.secret_access_key
         )
     
     def get_embeddings(self):
