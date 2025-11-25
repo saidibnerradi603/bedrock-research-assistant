@@ -6,6 +6,8 @@ from langchain_core.runnables import RunnablePassthrough
 from services.embedding_service import EmbeddingService
 from services.vector_store_service import VectorStoreService
 from config import get_settings
+import boto3
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,14 +18,25 @@ class ChatService:
     def __init__(self):
         settings = get_settings()
         
+        os.environ['AWS_ACCESS_KEY_ID'] = settings.access_key_id
+        os.environ['AWS_SECRET_ACCESS_KEY'] = settings.secret_access_key
+        os.environ['AWS_DEFAULT_REGION'] = settings.aws_default_region
+        
+        bedrock_client = boto3.client(
+            service_name='bedrock-runtime',
+            aws_access_key_id=settings.access_key_id,
+            aws_secret_access_key=settings.secret_access_key,
+            region_name=settings.aws_default_region
+        )
+        
         self.llm = ChatBedrockConverse(
             model=settings.bedrock_chat_model,
-            region_name=settings.aws_default_region
+            client=bedrock_client
         )
         
         self.streaming_llm = ChatBedrockConverse(
             model=settings.bedrock_chat_model,
-            region_name=settings.aws_default_region,
+            client=bedrock_client,
             streaming=True
         )
         
