@@ -11,13 +11,24 @@ from tools.search import tavily_search, perplexity_search
 import re
 from langchain_aws import ChatBedrockConverse
 from config import get_settings
+import boto3
 
 settings = get_settings()
+
+session = boto3.Session(
+    aws_access_key_id=settings.access_key_id,
+    aws_secret_access_key=settings.secret_access_key,
+    region_name=settings.aws_default_region
+)
+
+bedrock_client = session.client(
+    service_name='bedrock-runtime',
+    region_name=settings.aws_default_region
+)
+
 llm = ChatBedrockConverse(
     model="us.anthropic.claude-3-7-sonnet-20250219-v1:0",  
-    region_name=settings.aws_default_region,
-    aws_access_key_id=settings.access_key_id,
-    aws_secret_access_key=settings.secret_access_key
+    client=bedrock_client
 )
 
 
