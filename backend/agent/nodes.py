@@ -16,7 +16,6 @@ settings = get_settings()
 llm = ChatBedrockConverse(
     model="us.anthropic.claude-3-7-sonnet-20250219-v1:0",  
     region_name=settings.aws_default_region,
-    credentials_profile_name=None,
     aws_access_key_id=settings.access_key_id,
     aws_secret_access_key=settings.secret_access_key
 )
